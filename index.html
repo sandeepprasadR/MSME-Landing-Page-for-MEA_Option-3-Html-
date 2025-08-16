@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MoMSME | Global Collaboration Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    /* Base and Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e5ec;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:focus,
+    button:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #ffba08;
+      outline-offset: 2px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #fd6e62, #fda085);
+      padding: 8rem 2rem 3rem;
+      border-radius: 0 0 100px 100px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 15px 50px rgba(253, 110, 98, 0.5);
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: -30%; right: -10%; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+      border-radius: 50%;
+      animation: pulseGlow 10s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.15; }
+      50% { transform: scale(1.2); opacity: 0.35; }
+    }
+    .gov-badge {
+      position: relative;
+      color: #fff;
+      background: #821313cc;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 12px 26px;
+      font-weight: 700;
+      border-radius: 40px;
+      font-size: 1rem;
+      box-shadow: 0 0 15px #faa307cc;
+      margin-bottom: 3rem;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 3.8rem;
+      font-weight: 900;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 0 15px #f94144;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    header p.subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f2f6f4dd;
+      margin: 0 auto 2rem;
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+      line-height: 1.4;
+    }
+    header p.motivation {
+      font-size: 1.05rem;
+      font-weight: 400; 
+      color: #f2f6f4bb;
+      max-width: 660px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    /* PDF Banner */
+    .pdf-banner {
+      margin: -100px auto 90px auto;
+      background: #f6f5fa;
+      border-radius: 28px;
+      box-shadow: 10px 15px 40px rgba(93, 68, 29, 0.15);
+      padding: 50px 40px;
+      max-width: 840px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .pdf-banner h2 {
+      font-size: 2.8rem;
+      color: #821313;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .pdf-banner p {
+      font-size: 1.3rem;
+      color: #bd8744;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    .pdf-banner a.btn-download {
+      display: inline-block;
+      background: linear-gradient(135deg, #bd8744, #faa307);
+      padding: 14px 46px;
+      color: #3f2600;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 36px;
+      box-shadow: 0 8px 30px #dcb852cc;
+      transition: background 0.3s;
+      user-select: none;
+    }
+    .pdf-banner a.btn-download:hover,
+    .pdf-banner a.btn-download:focus {
+      background: linear-gradient(135deg, #f9ae45, #fbaa31);
+      outline: none;
+    }
+    /* Features */
+    .features {
+      display: flex;
+      gap: 28px;
+      max-width: 1140px;
+      margin: auto;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 90px;
+    }
+    .feature {
+      background: rgba(253, 110, 98, 0.9);
+      color: #fff;
+      flex: 1 1 320px;
+      padding: 36px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 45px rgba(253, 110, 98, 0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: default;
+    }
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 55px rgba(253, 110, 98, 0.6);
+    }
+    .feature h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .feature h3 i {
+      font-size: 30px;
+      color: #ffe5c3;
+      filter: drop-shadow(0 0 8px #fff2cc);
+      transition: transform 0.5s ease;
+    }
+    .feature:hover h3 i {
+      transform: rotate(20deg) scale(1.1);
+    }
+    .feature p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .tags {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .tags span {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff6e3;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      user-select: none;
+    }
+    /* Contact and Metrics */
+    .split {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+      margin-bottom: 120px;
+    }
+    .card {
+      background: #fcefe9;
+      color: #603913;
+      flex: 1 1 300px;
+      padding: 32px 28px;
+      border-radius: 24px;
+      box-shadow: 0 18px 60px #faa30744;
+      user-select: none;
+    }
+    .card h4 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .card p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    /* Sticky CTA Bar */
+    .sticky-bar {
+      position: sticky;
+      bottom: 0;
+      background: linear-gradient(90deg, #faa307dd, #fb8b3555);
+      padding: 14px 20px;
+      box-shadow: 0 0 22px #de7f0522;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      z-index: 9999;
+    }
+    .sticky-bar a {
+      background: #fff8f1;
+      color: #b76000;
+      user-select: none;
+      padding: 14px 28px;
+      border-radius: 32px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .sticky-bar a:hover,
+    .sticky-bar a:focus {
+      background: #f9aa4a;
+      color: #431d00;
+      outline: none;
+    }
+    /* Responsive */
+    @media (max-width: 880px) {
+      .features, .split {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sticky-bar {
+        flex-wrap: wrap;
+      }
+      .sticky-bar a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="gov-badge" role="banner">
+        <i class="fas fa-landmark"></i> Ministry of Micro, Small & Medium Enterprises, Govt. of India
+      </div>
+      <h1>MSME: Catalyst for Global Collaboration</h1>
+      <p class="subtitle">Connecting Enterprises from Local to Global Arenas</p>
+      <p class="motivation" role="region" aria-live="polite">
+        Embracing the spirit of global partnership, MSMEs serve as the foundation for inclusive growth, innovation, and shared prosperity, echoing the vision celebrated at Pravasi Bharatiya Divas and global forums.
+      </p>
+    </div>
+  </header>
+
+  <div class="pdf-banner" role="region" aria-label="Official MMC scheme booklet and download">
+    <div class="container">
+      <h2>Official MSME Scheme Booklet 2024</h2>
+      <p>Explore detailed schemes and incentives for sustained collaboration and growth</p>
+      <a href="MSMESchemebooklet.pdf" download class="btn-download" aria-label="Download MSME Scheme Booklet PDF">
+        <i class="fas fa-file-alt"></i> Download Official Document - Ministry of MSME
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="features" role="region" aria-label="Collaboration opportunities">
+      <section class="feature" aria-labelledby="feature1-title">
+        <h3 id="feature1-title" tabindex="0"><i class="fas fa-handshake"></i> Collaboration</h3>
+        <p>Engage in partnerships spanning investment, supply chain integration, market access, and growth.</p>
+        <div class="tags" aria-label="Collaboration features">
+          <span>Investment</span><span>Joint Ventures</span><span>Supply Chain</span><span>Market Access</span><span>Growth</span>
+        </div>
+      </section>
+      <section class="feature" aria-labelledby="feature2-title">
+        <h3 id="feature2-title" tabindex="0"><i class="fas fa-network-wired"></i> Supply Chain</h3>
+        <p>Collaborate with MSMEs providing robust manufacturing and distribution networks.</p>
+        <div class="tags" aria-label="Supply chain sectors">
+          <span>Manufacturing</span><span>Logistics</span><span>Quality Assurance</span><span>Distribution</span>
+        </div>
+      </section>
+      <section class="feature" aria-labelledby="feature3-title">
+        <h3 id="feature3-title" tabindex="0"><i class="fas fa-globe"></i> Markets & Growth</h3>
+        <p>Capitalize on expanding export markets and joint growth initiatives.</p>
+        <div class="tags" aria-label="Market growth features">
+          <span>Export Development</span><span>Brand Building</span><span>Global Networks</span>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="split" role="region" aria-label="Key contact points">
+      <article class="card" tabindex="0" aria-label="Ministry headquarters">
+        <h4>Ministry Headquarters</h4>
+        <address>
+          Udyog Bhawan, Rafi Marg,<br>
+          New Delhi - 110011<br>
+          Phone: 011-23063288
+        </address>
+      </article>
+      <article class="card" tabindex="0" aria-label="International cooperation">
+        <h4>International Cooperation</h4>
+        <p>Email: <a href="mailto:icdivision@msme.gov.in" style="color:#b76000;">icdivision@msme.gov.in</a></p>
+        <p>Phone: 011-26926275</p>
+      </article>
+    </div>
+  </div>
+
+  <nav class="sticky-bar" role="navigation" aria-label="Primary actions">
+    <a href="#register-collab" onclick="event.preventDefault(); openModal('registerModal');" role="button" aria-haspopup="dialog"> <i class="fas fa-handshake"></i> Register Collaboration Interest</a>
+    <a href="MSMEInvestmentGuide.pdf" download aria-label="Download investment guide"> <i class="fas fa-download"></i> Download Investment Guide</a>
+    <a href="#consult" onclick="event.preventDefault(); openModal('consultationModal');" role="button" aria-haspopup="dialog"> <i class="fas fa-calendar-check"></i> Schedule Consultation</a>
+    <a href="#join-fair" onclick="event.preventDefault(); openModal('tradeFairModal');" role="button" aria-haspopup="dialog"> <i class="fas fa-users"></i> Join Trade Fair</a>
+  </nav>
+
+  <!-- Modals -->
+
+  <div id="registerModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="registerTitle" aria-hidden="true" tabindex="-1">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Close modal" onclick="closeModal('registerModal')">&times;</button>
+      <h2 id="registerTitle">Register Collaboration Interest</h2>
+      <form>
+        <label for="companyName">Company Name*</label>
+        <input id="companyName" name="companyName" required />
+
+        <label for="collabType">Collaboration Type*</label>
+        <select id="collabType" name="collabType" required>
+          <option value="" disabled selected>Select</option>
+          <option>Investment</option>
+          <option>Joint Venture</option>
+          <option>Supply Chain</option>
+          <option>Market Access</option>
+          <option>Growth Collaboration</option>
+          <option>Other (Specify in comments)</option>
+        </select>
+
+        <label for="contactPerson">Contact Person*</label>
+        <input id="contactPerson" name="contactPerson" required />
+
+        <label for="contactEmail">Email*</label>
+        <input type="email" id="contactEmail" name="contactEmail" required />
+
+        <label for="contactPhone">Phone*</label>
+        <input type="tel" id="contactPhone" name="contactPhone" required />
+
+        <label for="contactCountry">Country*</label>
+        <input id="contactCountry" name="contactCountry" required />
+
+        <label for="additionalComments">Additional Comments</label>
+        <textarea id="additionalComments" name="additionalComments" rows="4" placeholder="Please provide any additional details"></textarea>
+
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="consultationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="consultTitle" aria-hidden="true" tabindex="-1">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Close modal" onclick="closeModal('consultationModal')">&times;</button>
+      <h2 id="consultTitle">Schedule Consultation</h2>
+      <form>
+        <label for="consultName">Name*</label>
+        <input id="consultName" name="consultName" required />
+
+        <label for="consultEmail">Email*</label>
+        <input type="email" id="consultEmail" name="consultEmail" required />
+
+        <label for="organization">Organization*</label>
+        <input id="organization" name="organization" required />
+
+        <label for="consultType">Consultation Type*</label>
+        <select id="consultType" name="consultType" required>
+          <option value="" disabled selected>Select</option>
+          <option>Video Call</option>
+          <option>Phone Call</option>
+          <option>In-person</option>
+        </select>
+
+        <label for="consultDate">Preferred Date*</label>
+        <input type="date" id="consultDate" name="consultDate" required />
+
+        <label for="consultTime">Preferred Time Slot*</label>
+        <select id="consultTime" name="consultTime" required>
+          <option value="" disabled selected>Select</option>
+          <option>Morning (9am - 12pm IST)</option>
+          <option>Afternoon (12pm - 3pm IST)</option>
+          <option>Evening (3pm - 6pm IST)</option>
+        </select>
+
+        <label for="consultFocus">Focus Area*</label>
+        <select id="consultFocus" name="consultFocus" required>
+          <option value="" disabled selected>Select</option>
+          <option>Investment</option>
+          <option>Regulatory</option>
+          <option>Partnership</option>
+          <option>Market Access</option>
+          <option>Government Schemes</option>
+          <option>Exports</option>
+        </select>
+
+        <label for="consultComments">Comments</label>
+        <textarea id="consultComments" name="consultComments" rows="4" placeholder="Specify topics or questions"></textarea>
+
+        <button type="submit" class="submit-btn">Schedule</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="tradeFairModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="tradeTitle" aria-hidden="true" tabindex="-1">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Close modal" onclick="closeModal('tradeFairModal')">&times;</button>
+      <h2 id="tradeTitle">Join Trade Fair</h2>
+      <form>
+        <label for="tradeEvent">Select Event*</label>
+        <select id="tradeEvent" name="tradeEvent" required>
+          <option value="" disabled selected>Select</option>
+          <option>Hannover Messe 2025 (Mar 31 - Apr 4)</option>
+          <option>India MSME Expo 2025 (Aug 28-30)</option>
+          <option>Bharat Mobility Expo 2025 (Jan 17-22)</option>
+          <option>AAHAR 2025 (Mar 4-8)</option>
+          <option>INDIASOFT 2025 (Mar 19-21)</option>
+          <option>World Food India 2025 (Sept 25-28)</option>
+          <option>UP International Trade Show (Sept 25-29)</option>
+          <option>IHGF Autumn 2025 (Oct 13-17)</option>
+          <option>Bharat Tex 2025 (Feb 14-17)</option>
+          <option>India Steel Expo 2025 (Apr 24-26)</option>
+          <option>Other (Specify below)</option>
+        </select>
+
+        <label for="participation">Participation Type*</label>
+        <select id="participation" name="participation" required>
+          <option value="" disabled selected>Select</option>
+          <option>Visitor</option>
+          <option>Exhibitor</option>
+          <option>Buyer</option>
+          <option>Delegate</option>
+        </select>
+
+        <label for="tradeCompany">Company Name*</label>
+        <input id="tradeCompany" name="tradeCompany" required />
+
+        <label for="tradeContact">Contact Person*</label>
+        <input id="tradeContact" name="tradeContact" required />
+
+        <label for="tradeEmail">Email*</label>
+        <input type="email" id="tradeEmail" name="tradeEmail" required />
+
+        <label for="tradePhone">Phone*</label>
+        <input type="tel" id="tradePhone" name="tradePhone" required />
+
+        <label for="tradeCountry">Country/Region*</label>
+        <input id="tradeCountry" name="tradeCountry" required />
+
+        <label for="tradeInterest">Products / Services Interest</label>
+        <textarea id="tradeInterest" name="tradeInterest" rows="4" placeholder="Describe areas of interest"></textarea>
+
+        <label for="tradeObjective">Trade Fair Objectives</label>
+        <textarea id="tradeObjective" name="tradeObjective" rows="4" placeholder="What are your goals?"></textarea>
+
+        <button type="submit" class="submit-btn">Register</button>
+      </form>
+    </div>
+  </div>
+
+<script>
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    const modal = document.getElementById(id);
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  window.addEventListener('click', (e) => {
+    document.querySelectorAll('.modal').forEach(modal => {
+      if (e.target === modal) {
+        closeModal(modal.id);
+      }
+    });
+  });
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your submission. We will be in touch soon.');
+      form.reset();
+      closeModal(form.closest('.modal').id);
+    });
+  });
+</script>
+
+</body>
+</html>
