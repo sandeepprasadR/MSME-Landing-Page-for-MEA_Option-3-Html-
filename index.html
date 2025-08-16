@@ -1,418 +1,646 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MoMSME | Global Collaboration Portal</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-<style>
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #e0e5ec;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  a:focus, button:focus, input:focus, select:focus, textarea:focus {
-    outline: 2px solid #ffba08;
-    outline-offset: 2px;
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  /* HEADER */
-  header {
-    background: linear-gradient(90deg, #fd6e62 70%, #fda085 100%);
-    padding: 5rem 2rem 3.5rem 2rem;
-    border-bottom-left-radius: 60px;
-    border-bottom-right-radius: 60px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 15px 50px rgba(253, 110, 98, 0.4);
-    margin-bottom: 0;
-    z-index: 1;
-  }
-  .gov-badge {
-    position: relative;
-    color: white;
-    background: #821313cc;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 12px 26px;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 40px;
-    box-shadow: 0 0 15px #faa307cc;
-    margin-bottom: 2.2rem;
-    z-index: 1;
-  }
-  header h1 {
-    font-size: 2.6rem;
-    font-weight: 900;
-    color: white;
-    margin-bottom: 0.7rem;
-    letter-spacing: 0.06em;
-    text-shadow: 0 0 12px #f94144;
-  }
-  header p.subtitle {
-    font-size: 1.15rem;
-    color: rgba(255,255,255,0.92);
-    margin-bottom: 1.1rem;
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.45;
-  }
-  header p.motivation {
-    font-size: 1.07rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.82);
-    max-width: 720px;
-    margin: 0 auto;
-    line-height: 1.45;
-  }
-  /* PDF Banner */
-  .pdf-banner {
-    margin: 40px auto 60px auto;
-    background: #fdf5e6;
-    border-radius: 24px;
-    box-shadow: 0 15px 50px rgba(253, 110, 98, 0.19);
-    padding: 40px 30px 38px;
-    max-width: 880px;
-    text-align: center;
-  }
-  .pdf-banner h2 {
-    font-size: 2.1rem;
-    font-weight: 900;
-    color: #d15800;
-    margin-bottom: 10px;
-  }
-  .pdf-banner p {
-    font-size: 1.12rem;
-    color: #b27200;
-    margin-bottom: 26px;
-  }
-  .pdf-banner a.btn-download {
-    display: inline-block;
-    background: linear-gradient(135deg, #d4690c, #e2710a);
-    padding: 14px 36px;
-    color: #fff8e9;
-    font-weight: 700;
-    font-size: 1.03rem;
-    border-radius: 40px;
-    box-shadow: 0 6px 30px #e2710a66;
-    transition: background 0.28s, color 0.28s;
-    user-select: none;
-    text-decoration: none;
-  }
-  .pdf-banner a.btn-download:hover,
-  .pdf-banner a.btn-download:focus {
-    background: linear-gradient(135deg, #ff8a20, #ff9b30);
-    color: #fff;
-    outline: none;
-  }
-  /* Features */
-  .features {
-    display: flex;
-    gap: 1.8rem;
-    max-width: 1200px;
-    margin: 0 auto 90px auto;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .feature {
-    background: linear-gradient(145deg, #f9d67a, #e29207);
-    color: #3e2600;
-    flex: 1 1 320px;
-    padding: 2.1rem 1.6rem 2.2rem;
-    border-radius: 20px;
-    box-shadow: 0 12px 38px rgba(226, 132, 38, 0.26);
-    cursor: default;
-    transition: all 0.28s ease;
-  }
-  .feature h3 {
-    font-weight: 900;
-    font-size: 1.34rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.12;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .feature h3 i {
-    font-size: 22px;
-    filter: drop-shadow(0 0 5px #e67d00);
-    transition: transform 0.4s ease;
-  }
-  .feature p {
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1.2rem;
-  }
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .tags span {
-    background: rgba(255, 255, 255, 0.32);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.90rem;
-    color: #502b00;
-    user-select: none;
-    margin-bottom: 4px;
-  }
-  /* Contact and Contacts */
-  .split {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 60px auto 90px auto;
-  }
-  .card {
-    flex: 1 1 320px;
-    background: linear-gradient(150deg, #fff4dc, #ffd285);
-    padding: 24px 24px;
-    border-radius: 22px;
-    box-shadow: 0 8px 28px #efa53142;
-    color: #573600;
-    user-select: none;
-  }
-  .card h4 {
-    font-weight: 900;
-    font-size: 1.2rem;
-    margin-bottom: 1.1rem;
-  }
-  .card p, .card address {
-    font-size: 1.02rem;
-    line-height: 1.6;
-    margin: 0 0 6px 0;
-  }
-  /* Sticky Bar */
-  .sticky-bar {
-    position: sticky;
-    bottom: 0;
-    background: linear-gradient(90deg, #e27b0fdd, #ea8f25cc);
-    padding: 12px 15px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    box-shadow: 0 -4px 15px #e27b0f99;
-    z-index: 9999;
-  }
-  .sticky-bar a {
-    background: #fff7e4;
-    color: #824300;
-    padding: 12px 20px;
-    border-radius: 40px;
-    font-weight: 700;
-    font-size: 1rem;
-    box-shadow: 0 4px 18px #dab768aa;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.27s, color 0.27s;
-    text-decoration: none;
-  }
-  .sticky-bar a:hover,
-  .sticky-bar a:focus {
-    background: #ef9f2b;
-    color: #4c2600;
-    outline: none;
-  }
-  /* Responsive */
-  @media (max-width: 920px) {
-    .features, .split {
-      flex-direction: column;
-      align-items: center;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MoMSME | Global Collaboration Portal</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-    .sticky-bar {
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e5ec;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:focus, button:focus, input:focus, select:focus, textarea:focus {
+      outline: 2px solid #ffba08;
+      outline-offset: 2px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #fd6e62 70%, #fda085 100%);
+      padding: 80px 24px 48px 24px;
+      border-bottom-left-radius: 80px;
+      border-bottom-right-radius: 80px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 14px 50px rgba(253, 110, 98, 0.46);
+      z-index: 2;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: -25%; right: -10%; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12), transparent);
+      border-radius: 50%;
+      animation: pulseGlow 12s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.12; }
+      50% { transform: scale(1.2); opacity: 0.35; }
+    }
+    .gov-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      background: rgba(130, 35, 35, 0.9);
+      padding: 12px 30px;
+      border-radius: 40px;
+      box-shadow: 0 0 15px rgba(255, 118, 118, 0.9);
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 3;
+    }
+    .gov-badge i {
+      font-size: 1.6rem;
+    }
+    header h1 {
+      font-size: 3.6rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 15px #cc3d3b;
+      position: relative;
+      z-index: 3;
+    }
+    header p.subtitle {
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: rgba(255, 245, 245, 0.9);
+      margin-bottom: 2.5rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      position: relative;
+      z-index: 3;
+    }
+    header p.motivation {
+      font-size: 1.15rem;
+      font-weight: 400;
+      font-style: italic;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      color: rgba(255, 230, 230, 0.8);
+      line-height: 1.6;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Stats Box */
+    .stats-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 70px 24px;
+      border-radius: 24px;
+      max-width: 1080px;
+      margin: 140px auto 100px auto;
+      box-shadow: 0 35px 65px rgba(255, 81, 60, 0.35);
+      text-align: center;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.8rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .stat-box {
+      background: rgba(255, 194, 147, 0.2);
+      border-radius: 22px;
+      padding: 3.2rem 2rem 2rem 2rem;
+      box-shadow: 0 10px 40px rgba(255, 180, 100, 0.4);
+      cursor: default;
+      transition: transform 0.3s ease;
+    }
+    .stat-box:hover {
+      transform: translateY(-15px);
+    }
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #ff8b45;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 10px #ff8b45aa;
+    }
+    .stat-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fffff0cc;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .stat-desc {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #ffd8a4cc;
+    }
+
+    /* PDF Banner */
+    .pdf-banner {
+      margin: 0 auto 90px auto;
+      padding: 32px 36px 48px 36px;
+      background: #fff7e7;
+      border-radius: 30px 0 0 80px;
+      box-shadow: 0 18px 65px rgba(227, 147, 67, 0.35);
+      max-width: 1040px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.5s ease;
+    }
+    .pdf-banner h2 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #9d5200;
+      margin-bottom: 1rem;
+    }
+    .pdf-banner p {
+      font-size: 1.3rem;
+      color: #a56d00aa;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    .pdf-banner a {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff9e00, #d37400);
+      color: #3c1d00;
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding: 16px 42px;
+      border-radius: 50px;
+      box-shadow: 0 8px 40px #df8b01cc;
+      transition: background 0.35s ease;
+      user-select: none;
+    }
+    .pdf-banner a:hover, .pdf-banner a:focus {
+      background: linear-gradient(135deg, #d37400ee, #ffac00cc);
+      color: #230e00;
+      outline: none;
+    }
+
+    /* Opportunities Section */
+    .opportunities-section {
+      margin-bottom: 120px;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .opportunities-section h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #ffb34d;
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+    .opportunities-section p {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #e6a951cc;
+      margin-bottom: 4rem;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .opportunity-box {
+      background: rgba(255, 150, 30, 0.15);
+      border-radius: 28px;
+      padding: 30px 28px 36px 32px;
+      box-shadow: 0 14px 40px rgba(255, 110, 23, 0.4);
+      margin-bottom: 3.6rem;
+      color: #442a00;
+      font-weight: 600;
+    }
+
+    .opportunity-box h3 {
+      font-weight: 900;
+      font-size: 1.7rem;
+      color: #fd8e05;
+      margin-bottom: 1rem;
+    }
+
+    .opportunity-box ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+    }
+
+    .opportunity-box li {
+      position: relative;
+      margin-bottom: 0.6rem;
+      padding-left: 1.6rem;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #a96e00;
+    }
+
+    .opportunity-box li::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      color: #f5a623;
+    }
+
+    .highlight-box {
+      background: #ffbb44aa;
+      padding: 16px 22px;
+      margin-top: 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #5a3600;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      margin-bottom: 140px;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-weight: 900;
+      font-size: 2.6rem;
+      color: #ffb14a;
+      margin-bottom: 1rem;
+    }
+    .contact-section p {
+      margin-bottom: 3.6rem;
+      font-size: 1.15rem;
+      color: #e1a642cc;
+    }
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
       flex-wrap: wrap;
     }
-    .sticky-bar a {
-      width: 100%;
-      justify-content: center;
+    .contact-card {
+      background: #ffefc5aa;
+      width: 320px;
+      padding: 28px 24px;
+      border-radius: 26px;
+      box-shadow: 0 18px 68px rgba(255, 134, 44, 0.3);
+      cursor: default;
+      user-select: none;
+      color: #775717;
     }
-  }
-  /* Modal Styles */
-  .modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.65);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-  }
-  .modal[aria-hidden="false"] {
-    display: flex;
-  }
-  .modal-content {
-    background: #fffef5;
-    padding: 2rem 2.1rem;
-    border-radius: 24px;
-    width: 95%;
-    max-width: 600px;
-    max-height: 95vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 10px 40px rgba(226, 132, 38, 0.24);
-  }
-  .modal-content h2 {
-    font-weight: 900;
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    color: #c45b00;
-  }
-  .modal-content label {
-    display: block;
-    font-weight: 700;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    color: #5f3b00;
-  }
-  .modal-content input,
-  .modal-content select,
-  .modal-content textarea {
-    width: 100%;
-    padding: 0.7rem;
-    border: 2px solid #e0cfa7;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 0.1rem;
-    transition: border-color 0.3s;
-  }
-  .modal-content input:focus,
-  .modal-content select:focus,
-  .modal-content textarea:focus {
-    outline: none;
-    border-color: #e27b0f;
-    box-shadow: 0 0 8px #deb46a;
-  }
-  .modal-content textarea {
-    resize: vertical;
-  }
-  .submit-btn {
-    margin-top: 2rem;
-    background: linear-gradient(135deg, #e27b0f, #eaa92a);
-    border: none;
-    padding: 1rem 0;
-    width: 100%;
-    border-radius: 32px;
-    color: #3b1f00;
-    font-weight: 900;
-    font-size: 1.07rem;
-    cursor: pointer;
-    box-shadow: 0 8px 30px #eaa92a66;
-    transition: background 0.3s;
-  }
-  .submit-btn:hover,
-  .submit-btn:focus {
-    background: linear-gradient(135deg, #ff9d00, #daa520);
-    outline: none;
-  }
-  .close-btn {
-    position: absolute;
-    top: 13px;
-    right: 18px;
-    font-size: 1.8rem;
-    color: #c45b00;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .close-btn:hover, .close-btn:focus {
-    color: #ffa700;
-    outline: none;
-  }
-</style>
+    .contact-card h4 {
+      font-weight: 900;
+      font-size: 1.45rem;
+      margin-bottom: 1rem;
+    }
+    .contact-card p, .contact-card address {
+      font-weight: 400;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      white-space: pre-line;
+    }
+
+    /* Sticky Bar */
+    .sticky-bar {
+      position: sticky;
+      bottom: 0;
+      background: linear-gradient(90deg, #ffb14a, #f0a556);
+      padding: 0.9rem 1.2rem;
+      box-shadow: 0 -5px 25px rgba(255, 104, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      z-index: 1000;
+    }
+    .sticky-bar a {
+      background: #fff5e1;
+      color: #7e4f00;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 28px;
+      border-radius: 50px;
+      box-shadow: 0 5px 18px rgba(150, 93, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.28s ease, color 0.28s ease;
+      user-select: none;
+    }
+    .sticky-bar a:hover,
+    .sticky-bar a:focus {
+      background: #deb45b;
+      color: #3e2600;
+      outline: none;
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1500;
+    }
+    .modal[aria-hidden="false"] {
+      display: flex;
+    }
+    .modal-content {
+      background: #fffdf5;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 28px;
+      padding: 2.5rem 3rem 3rem 3rem;
+      position: relative;
+      box-shadow: 0 15px 60px rgba(227, 147, 67, 0.35);
+    }
+    .modal-content h2 {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: #c15e00;
+      margin-bottom: 1.5rem;
+    }
+    .modal-content label {
+      display: block;
+      font-weight: 700;
+      margin-top: 1.2rem;
+      margin-bottom: 0.6rem;
+      color: #5c3800;
+    }
+    .modal-content input,
+    .modal-content select,
+    .modal-content textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid #e2d0a4;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      transition: border-color 0.3s;
+    }
+    .modal-content input:focus,
+    .modal-content select:focus,
+    .modal-content textarea:focus {
+      border-color: #e57a07;
+      box-shadow: 0 0 12px #dea230;
+      outline: none;
+    }
+    .modal-content textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .submit-btn {
+      background: linear-gradient(135deg, #e67a12, #dea230);
+      border: none;
+      padding: 1.15rem 0;
+      margin-top: 2rem;
+      width: 100%;
+      border-radius: 50px;
+      color: #431c00;
+      font-size: 1.18rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 15px 50px #dea23066;
+      transition: background 0.3s;
+    }
+    .submit-btn:hover, .submit-btn:focus {
+      background: linear-gradient(135deg, #d55f05, #c85a00);
+      outline: none;
+      color: #fff0d0;
+    }
+    .close-btn {
+      position: absolute;
+      top: 22px;
+      right: 25px;
+      font-size: 2rem;
+      color: #c46f00;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.25s;
+    }
+    .close-btn:hover, .close-btn:focus {
+      color: #ffae34;
+      outline: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .features, .split {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sticky-bar {
+        flex-wrap: wrap;
+        padding: 1rem 1.5rem;
+      }
+      .sticky-bar a {
+        max-width: 220px;
+        flex: 1 1 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  <script>
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      const firstInput = modal.querySelector('input, select, textarea, button');
+      if (firstInput) {
+        firstInput.focus();
+      }
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (e.target === modal) {
+          closeModal(modal.id);
+        }
+      });
+    });
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        alert('Thank you for your submission. We will contact you shortly.');
+        form.reset();
+        closeModal(form.closest('.modal').id);
+      });
+    });
+  </script>
 </head>
 <body>
-  <!-- HEADER -->
+  <!-- Content here as in CSS above -->
   <header>
     <div class="container">
-      <div class="gov-badge" role="banner" aria-label="Government of India Ministry of MSME">
+      <div class="gov-badge" aria-label="Government of India Ministry of MSME">
         <i class="fas fa-landmark"></i> Ministry of Micro, Small & Medium Enterprises, Government of India
       </div>
       <h1>MSME Catalyst for Global Collaboration</h1>
-      <p class="subtitle">
-        Connect with 60 million enterprises leading sustainable growth.
-      </p>
-      <p class="motivation" aria-live="polite">
-        Inspired by visionary leadership and the spirit of global partnership, MSMEs form the cornerstone of economic resilience and inclusive growth.
-      </p>
+      <p class="subtitle">Connect with 60 million enterprises leading sustainable growth.</p>
+      <p class="motivation" aria-live="polite">Inspired by visionary leadership and the spirit of global partnership, MSMEs form the cornerstone of economic resilience and inclusive growth.</p>
     </div>
   </header>
-  <!-- PDF Banner -->
-  <div class="pdf-banner" role="region" aria-label="Official MSME Scheme booklet and download">
+
+  <div class="pdf-banner" aria-label="Official MSME scheme booklet download">
     <div class="container">
       <h2>Official MSME Scheme Booklet 2024</h2>
       <p>Explore the comprehensive schemes and support for collaborative growth within MSMEs.</p>
-      <a href="MSMESchemebooklet.pdf" download class="btn-download" aria-label="Download MSME Scheme booklet PDF">
+      <a href="MSMESchemeBooklet.pdf" download class="btn-download" aria-label="Download MSME Scheme Booklet File">
         <i class="fas fa-file-alt"></i> Download Official Document - Ministry of MSME
       </a>
     </div>
   </div>
-  <!-- Features/Opportunities -->
+
   <div class="container">
-    <div class="features" role="region" aria-label="Collaboration opportunities">
-      <section class="feature" aria-labelledby="feature1">
-        <h3 id="feature1"><i class="fas fa-handshake"></i> Collaboration</h3>
-        <p>Explore multi-dimensional partnerships: investment, supply chain, market access, and joint growth.</p>
-        <div class="tags"><span>Investment</span><span>Joint Ventures</span><span>Supply Chain</span><span>Markets</span><span>Growth</span></div>
-      </section>
-      <section class="feature" aria-labelledby="feature2">
-        <h3 id="feature2"><i class="fas fa-network-wired"></i> Supply Chain</h3>
-        <p>Seamlessly integrate with high-quality domestic manufacturing and distribution channels.</p>
-        <div class="tags"><span>Manufacturing</span><span>Quality Assurance</span><span>Logistics</span><span>Distribution</span></div>
-      </section>
-      <section class="feature" aria-labelledby="feature3">
-        <h3 id="feature3"><i class="fas fa-globe"></i> Markets & Growth</h3>
-        <p>Leverage extensive networks for market expansion, export potential and brand-building.</p>
-        <div class="tags"><span>Exports</span><span>Branding</span><span>Global Connections</span></div>
-      </section>
+    <div class="stats-section" aria-label="MSME sector statistics">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-number">31%</div>
+          <div class="stat-label">GDP Contribution</div>
+          <div class="stat-desc">Total Economic Impact</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">60M+</div>
+          <div class="stat-label">Registered MSMEs</div>
+          <div class="stat-desc">Active Enterprises</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">45%</div>
+          <div class="stat-label">Export Share</div>
+          <div class="stat-desc">International Trade</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">260M+</div>
+          <div class="stat-label">Employment</div>
+          <div class="stat-desc">Second Largest Employer</div>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- Contact Information -->
+
   <div class="container">
-    <div class="split" role="region" aria-label="Contact information">
-      <article class="card" tabindex="0" aria-label="Ministry headquarters contact">
-        <h4>Ministry Headquarters</h4>
-        <address>
-          Kartavya Bhawan, Kartavya Path,<br>
-          New Delhi - 110001<br>
-          Phone: 011-23063288
-        </address>
-      </article>
-      <article class="card" tabindex="0" aria-label="International cooperation contact">
-        <h4>International Cooperation</h4>
-        <p>Email: <a href="mailto:icdivision@msme.gov.in" style="color:#b27200;">icdivision@msme.gov.in</a></p>
-        <p>Phone: 011-26926275</p>
-      </article>
-    </div>
+    <section class="opportunities-section" aria-label="Investment and collaboration opportunities">
+      <h2>Investment &amp; Partnership Opportunities</h2>
+      <p>Discover diverse sectors and comprehensive support for international collaboration</p>
+
+      <div class="opportunity-box">
+        <h3>Investment &amp; Trade Opportunities</h3>
+        <p>Access India's leading manufacturing sector accounting for over 35% of total production through MSMEs.</p>
+        <h4>Export-ready sectors:</h4>
+        <ul>
+          <li>Pharmaceuticals</li>
+          <li>Textiles</li>
+          <li>Auto Components</li>
+          <li>IT &amp; ITeS</li>
+          <li>Healthcare</li>
+          <li>Leather goods</li>
+        </ul>
+      </div>
+
+      <div class="opportunity-box">
+        <h3>Supply Chain Integration</h3>
+        <p>Connect to India's robust MSME driven supply ecosystem offering quality and reliability.</p>
+        <h4>Partnership Sectors:</h4>
+        <ul>
+          <li>Gems &amp; Jewellery</li>
+          <li>Engineering</li>
+          <li>Food processing</li>
+          <li>Nutraceuticals</li>
+          <li>Telecommunication</li>
+          <li>Tourism</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>Integration Benefits:</strong> End-to-end international quality certified supply networks
+        </div>
+      </div>
+
+      <div class="opportunity-box">
+        <h3>Government Support &amp; Policy</h3>
+        <p>Comprehensive government backing enabling 100% FDI under automatic route in MSME sectors.</p>
+        <h4>Emerging sectors:</h4>
+        <ul>
+          <li>Fintech</li>
+          <li>Digital Services</li>
+          <li>Green Technology</li>
+          <li>Clean Energy</li>
+          <li>Biotechnology</li>
+          <li>AgriTech</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>Investment Climate:</strong> Stable favorable policies and robust incentives
+        </div>
+      </div>
+    </section>
   </div>
-  <!-- CTA Bar -->
-  <nav class="sticky-bar" aria-label="Primary action menu">
+
+  <div class="container">
+    <section class="contact-section" aria-label="Contact information">
+      <h2>Contact Information</h2>
+      <p>Key offices facilitating partnership and information access</p>
+      <div class="split">
+        <article class="card" tabindex="0" aria-label="Ministry headquarters contact">
+          <h4>Ministry Headquarters</h4>
+          <address>
+            Kartavya Bhawan<br />
+            Kartavya Path<br />
+            New Delhi - 110001<br />
+            Phone: 011-23063288
+          </address>
+        </article>
+        <article class="card" tabindex="0" aria-label="International cooperation contact">
+          <h4>International Cooperation</h4>
+          <p>Email: <a href="mailto:icdivision@msme.gov.in" style="color:#804d02">icdivision@msme.gov.in</a></p>
+          <p>Phone: 011-26926275</p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <nav class="sticky-bar" role="navigation" aria-label="Primary actions menu">
     <a href="#" role="button" aria-haspopup="dialog" aria-controls="registerModal" onclick="event.preventDefault(); openModal('registerModal');">
       <i class="fas fa-handshake"></i> Register Collaboration Interest
     </a>
-    <a href="MSMEInvestmentGuide.pdf" download aria-label="Download Investment Guide">
+    <a href="MSMEInvestmentGuide.pdf" download aria-label="Download investment guide">
       <i class="fas fa-download"></i> Download Investment Guide
     </a>
     <a href="#" role="button" aria-haspopup="dialog" aria-controls="consultationModal" onclick="event.preventDefault(); openModal('consultationModal');">
@@ -422,68 +650,70 @@
       <i class="fas fa-users"></i> Join Trade Fair
     </a>
   </nav>
-  <!-- MODALS -->
-  <div id="registerModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="registerTitle" tabindex="-1">
+
+  <!-- Modals -->
+  <div id="registerModal" class="modal" aria-hidden="true" aria-labelledby="registerTitle" role="dialog" tabindex="-1">
     <div class="modal-content" role="document">
       <button class="close-btn" aria-label="Close modal" onclick="closeModal('registerModal');">&times;</button>
       <h2 id="registerTitle">Register Collaboration Interest</h2>
       <form>
-        <label for="companyName">Company Name*</label>
-        <input id="companyName" type="text" name="companyName" required />
-        <label for="collaborationType">Collaboration Type*</label>
-        <select id="collaborationType" name="collaborationType" required>
-          <option disabled selected value="">Select...</option>
+        <label for="companyName">Company Name<span aria-hidden="true">*</span></label>
+        <input type="text" id="companyName" required />
+        <label for="collaborationType">Collaboration Type<span aria-hidden="true">*</span></label>
+        <select id="collaborationType" required>
+          <option value="" selected disabled>Select</option>
           <option>Investment</option>
           <option>Joint Venture</option>
           <option>Supply Chain</option>
           <option>Market Access</option>
           <option>Growth</option>
-          <option>Other (Please specify in comments)</option>
+          <option>Other (specify below)</option>
         </select>
-        <label for="contactPerson">Contact Person*</label>
-        <input id="contactPerson" type="text" name="contactPerson" required />
-        <label for="email">Email*</label>
-        <input id="email" type="email" name="email" required />
-        <label for="phone">Phone*</label>
-        <input id="phone" type="tel" name="phone" pattern="[0-9+ ()-]{7,20}" required />
-        <label for="country">Country*</label>
-        <input id="country" type="text" name="country" required />
+        <label for="contactPerson">Contact Person<span aria-hidden="true">*</span></label>
+        <input type="text" id="contactPerson" required />
+        <label for="email">Email<span aria-hidden="true">*</span></label>
+        <input type="email" id="email" required />
+        <label for="phone">Phone<span aria-hidden="true">*</span></label>
+        <input type="tel" id="phone" required />
+        <label for="country">Country<span aria-hidden="true">*</span></label>
+        <input type="text" id="country" required />
         <label for="comments">Additional Comments</label>
-        <textarea id="comments" name="comments" rows="4" placeholder="Provide details or questions"></textarea>
+        <textarea id="comments" rows="4" placeholder="Provide details or questions"></textarea>
         <button type="submit" class="submit-btn">Submit</button>
       </form>
     </div>
   </div>
-  <div id="consultationModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="consultTitle" tabindex="-1">
+
+  <div id="consultationModal" class="modal" aria-hidden="true" aria-labelledby="consultTitle" role="dialog" tabindex="-1">
     <div class="modal-content" role="document">
       <button class="close-btn" aria-label="Close modal" onclick="closeModal('consultationModal');">&times;</button>
       <h2 id="consultTitle">Schedule Consultation</h2>
       <form>
-        <label for="consultName">Name*</label>
-        <input id="consultName" type="text" name="consultName" required />
-        <label for="consultEmail">Email*</label>
-        <input id="consultEmail" type="email" name="consultEmail" required />
-        <label for="organization">Organization*</label>
-        <input id="organization" type="text" name="organization" required />
-        <label for="consultType">Consultation Type*</label>
-        <select id="consultType" name="consultType" required>
-          <option disabled selected value="">Select...</option>
+        <label for="consultName">Name<span aria-hidden="true">*</span></label>
+        <input type="text" id="consultName" required />
+        <label for="consultEmail">Email<span aria-hidden="true">*</span></label>
+        <input type="email" id="consultEmail" required />
+        <label for="organization">Organization<span aria-hidden="true">*</span></label>
+        <input type="text" id="organization" required />
+        <label for="consultType">Consultation Type<span aria-hidden="true">*</span></label>
+        <select id="consultType" required>
+          <option value="" selected disabled>Select</option>
           <option>Video Call</option>
           <option>Phone Call</option>
-          <option>In-Person</option>
+          <option>In Person</option>
         </select>
-        <label for="date">Preferred Date*</label>
-        <input id="date" type="date" name="date" required />
-        <label for="time">Preferred Time Slot*</label>
-        <select id="time" name="time" required>
-          <option disabled selected value="">Select...</option>
+        <label for="date">Preferred Date<span aria-hidden="true">*</span></label>
+        <input type="date" id="date" required />
+        <label for="time">Preferred Time Slot<span aria-hidden="true">*</span></label>
+        <select id="time" required>
+          <option value="" selected disabled>Select</option>
           <option>Morning (9am-12pm IST)</option>
           <option>Afternoon (12pm-3pm IST)</option>
           <option>Evening (3pm-6pm IST)</option>
         </select>
-        <label for="focusArea">Focus Area*</label>
-        <select id="focusArea" name="focusArea" required>
-          <option disabled selected value="">Select...</option>
+        <label for="focusArea">Focus Area<span aria-hidden="true">*</span></label>
+        <select id="focusArea" required>
+          <option value="" selected disabled>Select</option>
           <option>Investment</option>
           <option>Regulatory</option>
           <option>Partnership</option>
@@ -492,19 +722,20 @@
           <option>Exports</option>
         </select>
         <label for="consultComments">Comments</label>
-        <textarea id="consultComments" name="consultComments" rows="4" placeholder="Questions or topic details"></textarea>
+        <textarea id="consultComments" rows="4" placeholder="Specify topics or questions"></textarea>
         <button type="submit" class="submit-btn">Schedule</button>
       </form>
     </div>
   </div>
-  <div id="tradeFairModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="tradeTitle" tabindex="-1">
+
+  <div id="tradeFairModal" class="modal" aria-hidden="true" aria-labelledby="tradeTitle" role="dialog" tabindex="-1">
     <div class="modal-content" role="document">
       <button class="close-btn" aria-label="Close modal" onclick="closeModal('tradeFairModal');">&times;</button>
       <h2 id="tradeTitle">Join Trade Fair</h2>
       <form>
-        <label for="event">Upcoming Event*</label>
-        <select id="event" name="event" required>
-          <option disabled selected value="">Select...</option>
+        <label for="event">Upcoming Event<span aria-hidden="true">*</span></label>
+        <select id="event" required>
+          <option value="" selected disabled>Select</option>
           <option>Hannover Messe 2025 (Mar 31 - Apr 4)</option>
           <option>India MSME Expo 2025 (Aug 28-30)</option>
           <option>Bharat Mobility Expo 2025 (Jan 17-22)</option>
@@ -515,41 +746,42 @@
           <option>IHGF Autumn 2025 (Oct 13-17)</option>
           <option>Bharat Tex 2025 (Feb 14-17)</option>
           <option>India Steel Expo 2025 (Apr 24-26)</option>
-          <option>Other (Specify in comments)</option>
+          <option>Other (specify below)</option>
         </select>
-        <label for="participation">Participation*</label>
-        <select id="participation" name="participation" required>
-          <option disabled selected value="">Select...</option>
+        <label for="participation">Participation<span aria-hidden="true">*</span></label>
+        <select id="participation" required>
+          <option value="" selected disabled>Select</option>
           <option>Visitor</option>
           <option>Exhibitor</option>
           <option>Buyer</option>
           <option>Delegate</option>
         </select>
-        <label for="company">Company Name*</label>
-        <input id="company" name="company" required />
-        <label for="contact">Contact Person*</label>
-        <input id="contact" name="contact" required />
-        <label for="email">Email*</label>
-        <input id="email" name="email" type="email" required />
-        <label for="phone">Phone*</label>
-        <input id="phone" name="phone" type="tel" required />
-        <label for="country">Country / Region*</label>
-        <input id="country" name="country" required />
-        <label for="interests">Products/Services of Interest</label>
-        <textarea id="interests" name="interests" rows="4" placeholder="Describe interests"></textarea>
+        <label for="company">Company Name<span aria-hidden="true">*</span></label>
+        <input id="company" required />
+        <label for="contact">Contact Person<span aria-hidden="true">*</span></label>
+        <input id="contact" required />
+        <label for="email">Email<span aria-hidden="true">*</span></label>
+        <input type="email" id="email" required />
+        <label for="phone">Phone<span aria-hidden="true">*</span></label>
+        <input type="tel" id="phone" required />
+        <label for="country">Country / Region<span aria-hidden="true">*</span></label>
+        <input id="country" required />
+        <label for="interests">Products / Services Interest</label>
+        <textarea id="interests" rows="4" placeholder="Describe interests"></textarea>
         <label for="goals">Objectives</label>
-        <textarea id="goals" name="goals" rows="4" placeholder="What do you aim to achieve?"></textarea>
+        <textarea id="goals" rows="4" placeholder="Describe goals"></textarea>
         <button type="submit" class="submit-btn">Register</button>
       </form>
     </div>
   </div>
+
   <script>
     function openModal(id) {
       const modal = document.getElementById(id);
       modal.style.display = 'flex';
       modal.setAttribute('aria-hidden', 'false');
       const firstInput = modal.querySelector('input, select, textarea, button');
-      if (firstInput) firstInput.focus();
+      if(firstInput) firstInput.focus();
       document.body.style.overflow = 'hidden';
     }
     function closeModal(id) {
@@ -558,17 +790,17 @@
       modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
-    window.addEventListener('click', (e) => {
-      document.querySelectorAll('.modal').forEach((modal) => {
-        if (e.target === modal) closeModal(modal.id);
+    document.addEventListener('click', e => {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if(e.target === modal) closeModal(modal.id);
       });
     });
-    document.querySelectorAll('.modal form').forEach(form => {
+    document.querySelectorAll('form').forEach(form => {
       form.addEventListener('submit', e => {
         e.preventDefault();
-        alert('Thank you! Submission received.');
-        closeModal(form.closest('.modal').id);
+        alert('Thank you for your submission. We will contact you shortly.');
         form.reset();
+        closeModal(form.closest('.modal').id);
       });
     });
   </script>
