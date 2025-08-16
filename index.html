@@ -8,21 +8,22 @@
 <style>
 body {
   font-family: 'Montserrat', Arial, sans-serif;
-  background: linear-gradient(115deg, #fafdff 0%, #e5f0fa 70%, #d4e1f4 100%);
+  background: linear-gradient(115deg, #fafdff 0%, #e5f0fa 75%, #d4e1f4 100%);
   color: #233954;
   min-height: 100vh;
   margin: 0;
-  transition: background 0.5s;
 }
 /* HEADER */
 header {
   background: linear-gradient(90deg, #0974ba 56%, #2dcbb0 99%);
   padding: 70px 16px 44px 16px;
-  border-bottom-left-radius: 56px;
-  border-bottom-right-radius: 56px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   text-align: center;
-  box-shadow: 0 14px 60px #1468a030;
+  box-shadow: none;
   color: #fff;
+  position: relative;
+  z-index: 2;
 }
 .gov-badge {
   display: inline-block;
@@ -60,12 +61,11 @@ header .motivation {
   text-shadow: 0 2px 8px #1267bc1a;
   opacity: 0.95;
 }
-/* Stat Boxes */
 .stats-row {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin: -58px auto 54px auto;
+  margin: 35px auto 54px auto;
   z-index: 2;
   position: relative;
   max-width: 1140px;
@@ -110,7 +110,11 @@ header .motivation {
   margin-top: 0.1rem;
   color: #4275a0;
 }
-/* Feature Boxes - Collaboration, Supply Chain, Markets & Growth */
+@media (max-width: 1000px) {
+  .stats-row, .feature-box-row, .contact-grid { flex-direction: column; align-items: center;}
+  .stats-row { gap:26px;}
+}
+/* Feature Boxes */
 .feature-box-row {
   display: flex;
   gap: 2.2rem;
@@ -175,215 +179,38 @@ header .motivation {
   font-size: 1em;
   margin-right: 4px;
 }
-
-/* Opportunity Cards / Detailed Section */
-.section-title {
-  font-weight: 900;
-  font-size: 2.2rem;
-  color: #2388bc;
-  margin-bottom: 0.95rem;
-  letter-spacing: 0.04em;
-  text-align: center;
-}
-.section-desc {
-  text-align: center;
-  font-size:1.11rem;
-  color: #3877a2;
-  margin-bottom: 2.6rem;
-}
-.opportunity-card-list {
-  display: flex;
-  flex-direction: column;
-  gap: 39px;
-  margin-top: 33px;
-}
-.opportunity-card {
-  background: linear-gradient(90deg, #f5fcff 60%, #fff5e0 100%);
-  border-radius: 24px;
-  box-shadow: 0 2px 24px #bed6ed44;
-  padding: 32px 36px 25px 36px;
-  color: #24477b;
-}
-.opportunity-card h3 {
-  font-size: 1.25rem;
-  color: #1e79c2;
-  font-weight: 900;
-  margin-bottom: 7px;
-  letter-spacing:0.03em;
-}
-.opportunity-card strong {
-  font-weight: 900;
-  color: #efaa1f;
-  display: block;
-  margin-bottom: .8rem;
-}
-.opportunity-card ul {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 13px;
-}
-.opportunity-card ul li {
-  font-size: 1.1rem;
-  margin-bottom: 6px;
-  color: #285885;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-.opportunity-card ul li .fa {
-  color: #fbad17;
-}
-.opportunity-card .card-note {
-  margin-top: 15px;
-  background: #f1f8ff;
-  color: #147476;
-  padding: 12px 19px;
-  border-radius: 14px;
-  font-size: 1.01rem;
-  font-weight: 700;
-  box-shadow: 0 1px 6px #97c3ea16;
-}
-
-/* Contact Section */
-.contact-section {
-  max-width: 1000px;
-  margin:60px auto 115px auto;
-  text-align: center;
-  color: #285885;
-  padding: 0 16px;
-}
-.contact-section h2 {
-  font-weight: 900;
-  font-size: 2rem;
-  color:#1e79c2;
-  margin-bottom: 1rem;
-}
-.contact-grid {
-  display: flex; flex-wrap: wrap; gap: 2.3rem; justify-content: center;
-  margin-bottom: 3.5rem;
-}
-.contact-box {
-  background: #f4fafb;
-  box-shadow: 0 7px 24px #b2e9f7;
-  border-radius: 1.8rem;
-  padding: 2.1rem 2.1rem;
-  min-width: 260px;
-  max-width: 370px;
-  text-align: left;
-  color: #197eb6;
-  font-size: 1rem;
-}
-.contact-box h4 {
-  font-weight: 900;
-  font-size: 1.14rem;
-  color: #1079bb;
-  margin-bottom: 7px;
-}
-.contact-box address {
-  font-style: normal;
-}
-/* Sticky Bar */
-.sticky-bar {
-  position: sticky;
-  bottom: 0; z-index: 10;
-  background: linear-gradient(90deg,#eaf8ff 60%,#fbdc9dc4 100%);
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-  padding: 1rem 0.6rem;
-  box-shadow: 0 -5px 24px #22739048;
-}
-.sticky-bar a {
-  background: #fff;
-  color: #196395;
-  font-weight: 700;
-  font-size: 1.01rem;
-  border-radius: 40px;
-  box-shadow: 0 4px 14px #73caff28;
-  padding: 14px 30px;
-  display: flex; align-items: center; gap: 9px;
-  cursor: pointer; text-decoration: none; user-select: none;
-  transition: background 0.17s,color 0.17s;
-}
-.sticky-bar a:hover, .sticky-bar a:focus {
-  background: #c0ebff;
-  color: #102a44;
-  outline: none;
-}
-/* MODALS */
-.modal {
-  position: fixed;
-  top: 0;left: 0;right: 0;bottom: 0;
-  width: 100vw;height: 100vh;
-  background: rgba(0,0,0,0.55);
-  display: none; align-items: center; justify-content: center;
-  z-index: 9999;
-}
+/* Opportunities Section */
+.section-title {font-weight:900;font-size:2.2rem;color:#2388bc;margin-bottom:.95rem;letter-spacing:0.04em;text-align:center;}
+.section-desc {text-align:center;font-size:1.11rem;color:#3877a2;margin-bottom:2.6rem;}
+.opportunity-card-list {display:flex;flex-direction:column;gap:39px;margin-top:33px;}
+.opportunity-card {background:linear-gradient(90deg,#f5fcff 60%,#fff5e0 100%); border-radius:24px; box-shadow:0 2px 24px #bed6ed44; padding:32px 36px 25px 36px; color:#24477b;}
+.opportunity-card h3 {font-size:1.25rem;color:#1e79c2;font-weight:900;margin-bottom:7px;letter-spacing:.03em;}
+.opportunity-card strong {font-weight:900;color:#efaa1f;display:block;margin-bottom:.8rem;}
+.opportunity-card ul {list-style:none;padding-left:0;margin-bottom:13px;}
+.opportunity-card ul li {font-size:1.1rem;margin-bottom:6px;color:#285885;display:flex;align-items:center;gap:9px;}
+.opportunity-card ul li .fa {color:#fbad17;}
+.opportunity-card .card-note {margin-top:15px;background:#f1f8ff;color:#147476;padding:12px 19px;border-radius:14px;font-size:1.01rem;font-weight:700;box-shadow:0 1px 6px #97c3ea16;}
+.contact-section {max-width:1000px;margin:60px auto 115px auto;text-align:center;color:#285885;padding:0 16px;}
+.contact-section h2 {font-weight:900;font-size:2rem;color:#1e79c2;margin-bottom:1rem;}
+.contact-grid {display:flex;flex-wrap:wrap;gap:2.3rem;justify-content:center;margin-bottom:3.5rem;}
+.contact-box {background:#f4fafb;box-shadow:0 7px 24px #b2e9f7;border-radius:1.8rem;padding:2.1rem 2.1rem;min-width:260px;max-width:370px;text-align:left;color:#197eb6;font-size:1rem;}
+.contact-box h4 {font-weight:900;font-size:1.14rem;color:#1079bb;margin-bottom:7px;}
+.contact-box address {font-style:normal;}
+.sticky-bar {position:sticky;bottom:0;z-index:10;background:linear-gradient(90deg,#eaf8ff 60%,#fbdc9dc4 100%);display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:1rem 0.6rem;box-shadow:0 -5px 24px #22739048;}
+.sticky-bar a {background:#fff;color:#196395;font-weight:700;font-size:1.01rem;border-radius:40px;box-shadow:0 4px 14px #73caff28;padding:14px 30px;display:flex;align-items:center;gap:9px;cursor:pointer;text-decoration:none;user-select:none;transition:background 0.17s,color 0.17s;}
+.sticky-bar a:hover,.sticky-bar a:focus {background:#c0ebff;color:#102a44;outline:none;}
+.modal {position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);display:none;align-items:center;justify-content:center;z-index:9999;}
 .modal[aria-hidden="false"] { display: flex;}
-.modal-content {
-  background: #fafdff;
-  border-radius: 2.1rem;
-  max-width: 510px; width: 97vw;
-  padding: 2.3rem 2.2rem 2.4rem 2.2rem;
-  box-shadow: 0 14px 50px #bbdae6cc;
-  position: relative;
-  overflow-y: auto; max-height:92vh;
-}
-.modal-content h2 {
-  font-weight: 900;
-  color: #176dd8;
-  margin-bottom: 1.3rem;
-  font-size: 1.31rem;
-}
-.modal-content label {
-  font-weight: 700;
-  color: #5372a3;
-  margin-top: 1.19rem;
-  margin-bottom: 0.32rem;
-  display: block;
-  font-size:.99rem;
-}
-.modal-content input,
-.modal-content select,
-.modal-content textarea {
-  width: 100%;
-  padding: 0.76rem 1rem;
-  border: 2px solid #b0d2fa;
-  border-radius: 0.94rem;
-  font-size: 1rem;
-  margin-bottom: 1.5px;
-  transition: border-color .14s;
-  font-family: inherit;
-}
-.modal-content input:focus,
-.modal-content select:focus,
-.modal-content textarea:focus {
-  border-color: #149beb;
-  outline: none;
-  box-shadow: 0 0 8px #88b3ec88;
-}
-.modal-content textarea { min-height: 67px; resize: vertical;}
-.submit-btn {
-  margin-top: 2rem;
-  background: linear-gradient(135deg,#209be5 0%, #13dfa1 100%);
-  border: none; padding: 1.1rem 0;
-  border-radius: 2rem; font-size: 1.1rem;font-weight: 900;
-  color: #fff; cursor: pointer;
-  box-shadow: 0 5px 24px #d0f1d488;
-  transition: background 0.2s;
-}
-.submit-btn:hover,.submit-btn:focus {
-  background: linear-gradient(135deg,#13dfa1 0%,#209be5 95%);
-  outline: none;
-}
-.close-btn {
-  position: absolute; top: 18px; right: 19px;
-  font-size: 2rem; color: #176dd8;
-  background: none; border: none; cursor:pointer;
-}
-.close-btn:hover, .close-btn:focus { color: #13dfa1;outline:none;}
-@media(max-width:1000px){
-  .feature-box-row,.contact-grid,.stats-row { flex-direction:column; align-items: center;}
-  .stats-row{gap:26px;}
-}
+.modal-content {background:#fafdff;border-radius:2.1rem;max-width:510px;width:97vw;padding:2.3rem 2.2rem 2.4rem 2.2rem;box-shadow:0 14px 50px #bbdae6cc;position:relative;overflow-y:auto;max-height:92vh;}
+.modal-content h2 {font-weight:900;color:#176dd8;margin-bottom:1.3rem;font-size:1.31rem;}
+.modal-content label {font-weight:700;color:#5372a3;margin-top:1.19rem;margin-bottom:0.32rem;display:block;font-size:.99rem;}
+.modal-content input,.modal-content select,.modal-content textarea {width:100%;padding:0.76rem 1rem;border:2px solid #b0d2fa;border-radius:0.94rem;font-size:1rem;margin-bottom:1.5px;transition:border-color .14s;font-family:inherit;}
+.modal-content input:focus,.modal-content select:focus,.modal-content textarea:focus {border-color:#149beb;outline:none;box-shadow:0 0 8px #88b3ec88;}
+.modal-content textarea {min-height:67px;resize:vertical;}
+.submit-btn {margin-top:2rem;background:linear-gradient(135deg,#209be5 0%, #13dfa1 100%);border:none;padding:1.1rem 0;border-radius:2rem;font-size:1.1rem;font-weight:900;color:#fff;cursor:pointer;box-shadow:0 5px 24px #d0f1d488;transition:background 0.2s;}
+.submit-btn:hover,.submit-btn:focus {background:linear-gradient(135deg,#13dfa1 0%,#209be5 95%);outline:none;}
+.close-btn {position:absolute;top:18px;right:19px;font-size:2rem;color:#176dd8;background:none;border:none;cursor:pointer;}
+.close-btn:hover,.close-btn:focus {color:#13dfa1;outline:none;}
 </style>
 <script>
 function openModal(id){
@@ -429,22 +256,22 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="stats-row">
   <div class="statcard">
     <div class="stat-num">31%</div>
-    <div class="stat-label">GDP Contribution</div>
+    <div class="stat-label">GDP CONTRIBUTION</div>
     <div class="stat-desc">Total Economic Impact</div>
   </div>
   <div class="statcard">
     <div class="stat-num">60M+</div>
-    <div class="stat-label">Registered MSMEs</div>
+    <div class="stat-label">REGISTERED MSMES</div>
     <div class="stat-desc">Active Enterprises</div>
   </div>
   <div class="statcard">
     <div class="stat-num">45%</div>
-    <div class="stat-label">Export Share</div>
+    <div class="stat-label">EXPORT SHARE</div>
     <div class="stat-desc">International Trade</div>
   </div>
   <div class="statcard">
     <div class="stat-num">260M+</div>
-    <div class="stat-label">Employment</div>
+    <div class="stat-label">EMPLOYMENT</div>
     <div class="stat-desc">Second Largest Employer</div>
   </div>
 </div>
