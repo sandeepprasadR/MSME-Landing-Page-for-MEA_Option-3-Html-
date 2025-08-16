@@ -1,443 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MSME Collaboration Portal</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-<style>
-body {
-  font-family: 'Montserrat', Arial, sans-serif;
-  margin: 0;
-  background: linear-gradient(120deg, #f5fbff 0%, #e3f0fa 80%);
-  min-height: 100vh;
-  color: #13355d;
-}
-/* HEADER */
-header {
-  background: linear-gradient(90deg, #186bcd 60%, #30e9ff 110%);
-  color: #fff;
-  text-align: center;
-  padding: 68px 20px 44px 20px;
-  border-bottom-left-radius: 64px;
-  border-bottom-right-radius: 64px;
-  box-shadow: 0 16px 48px #30e9ff2e;
-}
-header .gov-badge {
-  display: inline-block;
-  background: #0c4a88e6;
-  color: #fff;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  border-radius: 24px;
-  padding: 11px 28px;
-  margin-bottom: 23px;
-  font-size: 1.09rem;
-  box-shadow: 0 2px 18px #13355d3a;
-}
-header h1 {
-  font-size: 2.6rem;
-  margin-bottom: 0.8rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-}
-header .subtitle {
-  font-size: 1.18rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #e8f6ff;
-}
-header .motivation {
-  font-size: 1.04rem;
-  color: #def7ff;
-  opacity: 0.91;
-  max-width: 660px;
-  margin: 0 auto;
-}
-/* STATS CARDS */
-.stats-row {
-  display: flex;
-  justify-content: center;
-  gap: 2.1rem;
-  max-width: 1200px;
-  margin: -40px auto 56px auto;
-  position: relative;
-  flex-wrap: wrap;
-  z-index: 2;
-}
-.stat-card {
-  flex: 1 1 210px;
-  min-width: 210px; max-width: 265px;
-  background: #fff;
-  border-radius: 2rem;
-  padding: 31px 0;
-  margin-bottom: 8px;
-  text-align: center;
-  box-shadow: 0 7px 32px #186bcd19, 0 2px 11px #ffd70018;
-  transition: box-shadow 0.29s, transform 0.19s;
-  border: 1px solid #def3fd;
-}
-.stat-card:hover {
-  box-shadow: 0 24px 55px #186bcd38, 0 4px 18px #ffae4321;
-  transform: translateY(-7px) scale(1.04);
-}
-.stat-number {
-  font-size: 2.55rem;
-  font-weight: 900;
-  color: #ffae43;
-  margin-bottom: 8px;
-  letter-spacing: 0.04em;
-}
-.stat-title {
-  font-weight: 800;
-  font-size: 1.12rem;
-  text-transform: uppercase;
-  color: #15538e;
-}
-.stat-desc {
-  font-weight: 500;
-  font-size: .95rem;
-  margin-top: 4px;
-  color: #539ddb;
-}
-
-/* Features Section */
-.feature-section {
-  max-width:1200px;
-  margin: 0 auto 80px;
-  padding: 0 24px;
-}
-.feature-headline {
-  font-weight: 800;
-  font-size: 2.1rem;
-  margin-bottom: 14px;
-  color: #194075;
-  text-align: center;
-  letter-spacing: 0.03em;
-}
-.feature-subtitle {
-  font-weight: 500;
-  font-size: 1.09rem;
-  margin-bottom: 44px;
-  color: #539ddb;
-  text-align:center;
-}
-.feature-cards {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  flex-wrap: wrap;
-}
-.feature-card {
-  background:#fff;
-  border-radius: 24px;
-  padding: 26px 24px 26px 24px;
-  width: 320px;
-  box-shadow: 0 5px 24px #ffd70023, 0 2px 7px #186bcd11;
-  transition: box-shadow 0.22s linear, transform 0.17s;
-  border: 1.5px solid #e8f1fb;
-  margin-bottom: 14px;
-}
-.feature-card:hover {
-  box-shadow: 0 11px 27px #ffae4315, 0 3px 14px #186bcd26;
-  transform: translateY(-4px);
-}
-.feature-card h3 {
-  font-weight: 800;
-  font-size: 1.34rem;
-  margin-bottom: 12px;
-  color: #305076;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.feature-card h3 i {
-  color: #ffae43;
-}
-.feature-card p {
-  font-weight: 500;
-  font-size: 1.03rem;
-  margin-bottom: 13px;
-  color: #25557c;
-}
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-}
-.tag {
-  background: #ffefc1;
-  color: #bf7700;
-  font-weight: 700;
-  border-radius: 14px;
-  padding: 6px 15px;
-  font-size: .97rem;
-  user-select: none;
-  border: 1px solid #ffd70060;
-}
-
-/* Opportunities Cards */
-.opportunities {
-  max-width: 900px;
-  margin: 0 auto 75px;
-  color: #17273c;
-  padding: 0 16px;
-}
-.opportunities h2 {
-  font-weight: 800;
-  font-size: 1.71rem;
-  margin-bottom: 16px;
-  text-align: center;
-  color: #194075;
-  letter-spacing: 0.01em;
-}
-.opportunities p {
-  font-weight: 500;
-  font-size: 1.04rem;
-  margin-bottom: 25px;
-  text-align: center;
-  color: #539ddb;
-}
-.opportunity-box {
-  background: #fffef7;
-  border-radius: 21px;
-  padding: 24px 28px;
-  margin-bottom: 22px;
-  box-shadow: 0 1px 10px #186bcd14;
-  border: 1px solid #fff2c3;
-}
-.opportunity-box h3 {
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: #cd8700;
-  font-size: 1.13rem;
-}
-.opportunity-box strong {
-  font-weight: 700;
-  margin-bottom: 12px;
-  display: block;
-  color: #18497e;
-}
-.opportunity-box ul {
-  list-style: none;
-  padding-left: 0;
-}
-.opportunity-box li {
-  margin-bottom: 6px;
-  position: relative;
-  padding-left: 16px;
-  color: #23456f;
-  font-size: 1rem;
-}
-.opportunity-box li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #ffae43;
-  font-weight: bold;
-}
-.opportunity-note {
-  background: #f0f9ff;
-  padding: 9px 16px;
-  border-radius: 14px;
-  font-weight: 600;
-  color: #148c90;
-  margin-top: 14px;
-  font-size: 0.98rem;
-  border: 1px solid #b2e2fa;
-}
-
-/* Contact Section */
-.contact-section {
-  max-width: 900px;
-  margin: 0 auto 90px;
-  padding: 0 18px;
-  color: #1c385c;
-  text-align: center;
-}
-.contact-section h2 {
-  font-weight: 800;
-  font-size: 1.31rem;
-  margin-bottom: 19px;
-  letter-spacing: 0.03em;
-}
-.contact-cards {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  flex-wrap: wrap;
-}
-.contact-card {
-  background: #fcfcff;
-  border-radius: 17px;
-  padding: 17px 19px;
-  box-shadow: 0 1px 9px #bbd7f757;
-  width: 285px;
-  border: 1.2px solid #def3fd;
-  margin-bottom: 8px;
-  color:#184775;
-  font-size: 1rem;
-  font-weight: 600;
-}
-.contact-card h4 { font-weight:900; margin-bottom:7px;}
-.contact-card address, .contact-card p {font-size:1rem;line-height:1.42;}
-
-/* Sticky Bar */
-.sticky-bar {
-  position: sticky;
-  bottom: 0;
-  background: linear-gradient(90deg,#186bcd 92%,#ffae43 170%);
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 5px;
-  flex-wrap: wrap;
-  z-index: 9999;
-}
-.sticky-bar a {
-  background: #ffefc1;
-  color: #1f3772;
-  font-weight: 700;
-  padding: 11px 19px;
-  border-radius: 22px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid #ffd70060;
-}
-.sticky-bar a:hover {
-  background: #ffd700;
-  color: #174276;
-}
-.sticky-bar a:focus { outline:2px solid #ffae43; }
-
-/* Modal Styles */
-.modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.57);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-}
-.modal[aria-hidden="false"] { display: flex; }
-.modal-content {
-  background: #fff;
-  color: #235089;
-  border-radius: 19px;
-  max-width: 500px;
-  width: 92vw;
-  padding: 28px 29px 32px 29px;
-  position: relative;
-  box-shadow: 0 7px 29px #186bcd33;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-.modal-content h2 {
-  margin-top: 0;
-  margin-bottom: 17px;
-  font-weight: 800;
-  font-size: 1.18rem;
-}
-.modal-content label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 700;
-  font-size: .97rem;
-}
-.modal-content input,
-.modal-content select,
-.modal-content textarea {
-  width: 100%;
-  padding: 8px 12px;
-  margin-bottom: 13px;
-  border: 1.5px solid #b4d2fd;
-  border-radius: 9px;
-  font-size: 1rem;
-  font-family: inherit;
-}
-.modal-content input:focus,
-.modal-content select:focus,
-.modal-content textarea:focus {
-  border-color: #186bcd;
-  outline: none;
-  box-shadow: 0 0 5px #30e9ff99;
-}
-.submit-btn {
-  width: 100%;
-  padding: 11px 0;
-  font-size: 1rem;
-  font-weight: 800;
-  background: #186bcd;
-  color: #fff;
-  border: none;
-  border-radius: 17px;
-  cursor: pointer;
-  margin-top: 6px;
-}
-.submit-btn:hover, .submit-btn:focus {
-  background: #ffae43;
-  color: #174276;
-}
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 18px;
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #186bcd;
-}
-.close-btn:hover, .close-btn:focus { color: #ffae43; }
-@media (max-width:1000px) {
-  .stats-row, .feature-cards, .contact-cards { flex-direction:column; align-items:center;}
-  .stat-card, .feature-card, .contact-card { width:100%; min-width:0; max-width:350px;}
-}
-</style>
-<script>
-function openModal(id) {
-  const modal = document.getElementById(id);
-  modal.setAttribute('aria-hidden', 'false');
-  modal.style.display = 'flex';
-  const first = modal.querySelector('input, select, textarea, button');
-  if (first) first.focus();
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  modal.setAttribute('aria-hidden', 'true');
-  modal.style.display = 'none';
-  document.body.style.overflow = '';
-}
-document.addEventListener('click', e => {
-  document.querySelectorAll('.modal').forEach(modal => {
-    if (e.target === modal) closeModal(modal.id);
-  });
-});
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Thank you! Your submission has been received.');
-      form.reset();
-      closeModal(form.closest('.modal').id);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MSME Collaboration Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0959ab;
+      --primary-light: #00bedb;
+      --accent: #ffbe31;
+      --bg: #f6fcff;
+      --stat-bg: #fff;
+      --card-bg: #fff;
+      --dark: #16243b;
+      --badge: #f6dfa3;
+      --muted: #456899;
+    }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+    }
+    header {
+      background: linear-gradient(90deg, var(--primary) 60%, var(--primary-light) 110%);
+      color: white;
+      text-align: center;
+      padding: 82px 16px 60px 16px;
+      border-bottom-left-radius: 65px;
+      border-bottom-right-radius: 65px;
+      box-shadow: 0 8px 55px #29c5ec26;
+      position: relative;
+      z-index: 1;
+    }
+    .gov-badge {
+      display: inline-block;
+      background: #013969e0;
+      color: #ffe;
+      font-weight: 700;
+      border-radius: 24px;
+      padding: 10px 28px;
+      font-size: 1.02rem;
+      box-shadow: 0 2px 16px #0f396c2a;
+      letter-spacing: 0.025em;
+      margin-bottom: 22px;
+    }
+    header h1 {
+      font-weight: 800;
+      font-size: 2.55rem;
+      margin-bottom: 0.6em;
+      letter-spacing: 0.02em;
+    }
+    header .subtitle {
+      font-size: 1.23rem;
+      font-weight: 600;
+      margin-bottom: 0.8em;
+      color: #fbeece;
+    }
+    header .motivation {
+      font-size: 1.05rem;
+      color: #eaf8fe;
+      max-width: 690px;
+      margin: 0 auto;
+      opacity: 0.92;
+    }
+    /* STATS */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.7rem;
+      max-width: 1280px;
+      margin: -60px auto 48px auto;
+      padding: 0 12px;
+      z-index: 5;
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      background: var(--stat-bg);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px #1691d517, 0 1px 8px #ffbe3122;
+      min-width: 215px;
+      max-width: 270px;
+      flex: 1 1 220px;
+      padding: 30px 12px 28px 12px;
+      margin-bottom: 16px;
+      text-align: center;
+      border: 1.5px solid #e1eaf8;
+      transition: box-shadow 0.19s,transform 0.17s;
+    }
+    .stat-card:hover {
+      box-shadow: 0 15px 48px #2ad3ed41, 0 2px 14px #ffbe3137;
+      transform: translateY(-6px) scale(1.04);
+    }
+    .stat-number {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 2.3rem;
+      margin-bottom: 7px;
+      letter-spacing: 0.01em;
+    }
+    .stat-title {
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      color: var(--dark);
+      font-size: 1.07rem;
+      margin-bottom: 5px;
+    }
+    .stat-desc {
+      color: var(--muted);
+      font-size: 0.97rem;
+      font-weight: 500;
+    }
+    /* FEATURES */
+    .feature-section {
+      max-width:1200px;
+      margin: 0 auto 70px;
+      padding: 0 15px;
+    }
+    .feature-headline {
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+      text-align: center;
+      letter-spacing: 0.025em;
+    }
+    .feature-subtitle {
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #45bde2;
+      text-align: center;
+      margin-bottom: 33px;
+    }
+    .feature-cards {
+      display: flex;
+      justify-content: center;
+      gap: 21px;
+      flex-wrap: wrap;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 21px;
+      box-shadow: 0 3px 18px #186bcd1b, 0 2px 7px #f9b1220b;
+      width: 320px;
+      padding: 23px 20px 26px 20px;
+      margin-bottom: 12px;
+      border: 1.2px solid #e9ecef;
+      transition: box-shadow 0.18s,transform 0.17s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 17px 28px #ffd70021,0 4px 12px #39bee433;
+      transform: translateY(-4px);
+    }
+    .feature-card h3 {
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #194075;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feature-card h3 i {
+      color: var(--accent);
+    }
+    .feature-card p {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1b385b;
+      margin-bottom: 8px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--badge);
+      color: #865900;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 5px 16px;
+      font-size: 0.95rem;
+      user-select: none;
+      border: 1.3px solid #ffe4a8;
+    }
+    /* OPPORTUNITIES */
+    .opportunities {
+      max-width: 950px;
+      margin: 0 auto 60px;
+      color: #14254a;
+      padding: 0 12px;
+    }
+    .opportunities h2 {
+      font-weight: 800;
+      font-size: 1.19rem;
+      margin-bottom: 16px;
+      text-align:center;
+      color: #194075;
+    }
+    .opportunities p {
+      font-weight: 500;
+      font-size: 1.03rem;
+      margin-bottom: 16px;
+      text-align:center;
+      color: #45bde2;
+    }
+    .opportunity-box {
+      background: #fffef8;
+      border-radius: 15px;
+      padding: 19px 21px 15px 21px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 10px #acc9ec35;
+      border: 1.1px solid #ffe89b;
+    }
+    .opportunity-box h3 {
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: #FFA900;
+      font-size: 1.08rem;
+    }
+    .opportunity-box strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #0959ab;
+    }
+    .opportunity-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .opportunity-box li {
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 14px;
+      color: #194075;
+      font-size: 0.96rem;
+    }
+    .opportunity-box li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.07em;
+    }
+    .opportunity-note {
+      background: #fffadc;
+      padding: 8px 12px;
+      border-radius: 9px;
+      font-weight: 600;
+      color: #8c7300;
+      margin-top: 7px;
+      font-size: .96rem;
+      border: 1px solid #ffecad;
+      display: inline-block;
+    }
+    /* CONTACT */
+    .contact-section {
+      max-width: 950px;
+      margin: 0 auto 60px;
+      color: #17335c;
+      text-align: center;
+      padding: 0 10px;
+    }
+    .contact-section h2 {
+      font-weight: 800;
+      font-size: 1.08rem;
+      margin-bottom: 14px;
+      letter-spacing: 0.01em;
+      color: #1d2456;
+    }
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .contact-card {
+      background: var(--stat-bg);
+      border-radius: 12px;
+      padding: 15px 15px;
+      box-shadow: 0 1px 9px #4ca6e53a;
+      min-width: 225px; max-width: 340px;
+      border: 1px solid #e6f0f7;
+      margin-bottom: 8px;
+      color: #183762;
+      font-size: 0.97rem;
+      font-weight: 600;
+    }
+    .contact-card h4 { font-weight:800; margin-bottom:6px;}
+    .contact-card address, .contact-card p {font-size:.97rem;}
+    /* STICKY BAR */
+    .sticky-bar {
+      position: sticky;
+      bottom: 0;
+      background: linear-gradient(90deg,var(--primary) 90%,var(--accent) 160%);
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 5px;
+      flex-wrap: wrap;
+      z-index: 9999;
+    }
+    .sticky-bar a {
+      background: var(--badge);
+      color: #234982;
+      font-weight: 700;
+      padding: 11px 19px;
+      border-radius: 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      transition: background 0.17s, color 0.17s;
+      font-size: 1rem;
+    }
+    .sticky-bar a:hover {
+      background: var(--accent);
+      color: #194075;
+    }
+    .sticky-bar a:focus { outline:2px solid var(--accent); }
+    /* MODAL */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.47);
+      display: none; align-items: center; justify-content: center;
+      z-index: 10000;
+    }
+    .modal[aria-hidden="false"] { display: flex; }
+    .modal-content {
+      background: #fff;
+      color: #19539c;
+      border-radius: 11px;
+      max-width: 420px;
+      width: 90vw;
+      padding: 22px 20px 23px 20px;
+      position: relative;
+      box-shadow: 0 8px 29px #2974e933;
+      max-height: 91vh;
+      overflow-y: auto;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-weight: 800;
+      font-size: 1.09rem;
+    }
+    .modal-content label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 700;
+      font-size: 0.97rem;
+    }
+    .modal-content input,
+    .modal-content select,
+    .modal-content textarea {
+      width: 100%;
+      padding: 7px 10px;
+      margin-bottom: 13px;
+      border: 1.3px solid #bde2fc;
+      border-radius: 7px;
+      font-size: .97rem;
+      font-family: inherit;
+    }
+    .modal-content input:focus,
+    .modal-content select:focus,
+    .modal-content textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 5px #4cb5ff99;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 9px 0;
+      font-size: 1rem;
+      font-weight: 800;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 7px;
+    }
+    .submit-btn:hover, .submit-btn:focus {
+      background: var(--accent);
+      color: #17273c;
+    }
+    .close-btn {
+      position: absolute;
+      top: 14px;
+      right: 17px;
+      font-size: 1.4rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary);
+    }
+    .close-btn:hover, .close-btn:focus { color: var(--accent);}
+    @media (max-width:1000px) {
+      .stats-row, .feature-cards, .contact-cards { flex-direction:column; align-items:center;}
+      .stat-card, .feature-card, .contact-card { width:100%; min-width:0; max-width:350px;}
+    }
+  </style>
+  <script>
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.setAttribute('aria-hidden', 'false');
+      modal.style.display = 'flex';
+      const first = modal.querySelector('input, select, textarea, button');
+      if (first) first.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      modal.setAttribute('aria-hidden', 'true');
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('click', e => {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (e.target === modal) closeModal(modal.id);
+      });
     });
-  });
-});
-</script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          alert('Thank you! Submission received.');
+          form.reset();
+          closeModal(form.closest('.modal').id);
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 <header>
-  <div class="gov-badge"><i class="fas fa-landmark"></i> Ministry of Micro, Small & Medium Enterprises, Government of India</div>
+  <div class="gov-badge"><i class="fas fa-landmark"></i> Ministry of MSME, Government of India</div>
   <h1>MSME Collaboration Gateway</h1>
-  <div class="subtitle">Connect with 60 million MSMEs driving India’s growth.</div>
-  <div class="motivation">MSMEs build resilience and progress through open partnerships, innovation, and strong support programs.</div>
+  <div class="subtitle">Connect with 60 million small businesses driving India’s growth.</div>
+  <div class="motivation">MSMEs are building the nation with new ideas, making industry stronger, and bringing jobs and progress to more people.</div>
 </header>
-
 <section class="stats-row">
   <div class="stat-card">
     <div class="stat-number">31%</div>
@@ -460,14 +469,13 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="stat-desc">Second Largest Employer</div>
   </div>
 </section>
-
 <section class="feature-section">
   <div class="feature-headline">Opportunities with MSMEs</div>
-  <div class="feature-subtitle">Explore options for investment, supply chain, market entry, and more.</div>
+  <div class="feature-subtitle">Choose how you want to connect and grow with Indian businesses.</div>
   <div class="feature-cards">
     <div class="feature-card">
       <h3><i class="fas fa-handshake"></i> Collaboration</h3>
-      <p>Work together across investment, supply chain, and growth.</p>
+      <p>Work together on investment, supply chain, and growth.</p>
       <div class="tags">
         <span class="tag">Investment</span>
         <span class="tag">Joint Ventures</span>
@@ -478,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="feature-card">
       <h3><i class="fas fa-network-wired"></i> Supply Chain</h3>
-      <p>Partner with strong production and logistics networks.</p>
+      <p>Join strong production and logistics networks.</p>
       <div class="tags">
         <span class="tag">Manufacturing</span>
         <span class="tag">Quality Assurance</span>
@@ -488,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="feature-card">
       <h3><i class="fas fa-globe"></i> Markets & Growth</h3>
-      <p>Reach new markets and strengthen your export presence.</p>
+      <p>Reach new customers in India and abroad.</p>
       <div class="tags">
         <span class="tag">Exports</span>
         <span class="tag">Branding</span>
@@ -497,14 +505,13 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 </section>
-
 <section class="opportunities">
-  <h2>Key Sectors & Support</h2>
-  <p>MSMEs are active in industries with strong demand and a supportive business environment.</p>
+  <h2>Key Sectors & Initiatives</h2>
+  <p>MSMEs are part of the fastest-growing sectors and get strong policy support.</p>
   <div>
     <div class="opportunity-box">
       <h3>Investment & Trade</h3>
-      <strong>MSMEs make up over 35% of India’s manufacturing output.</strong>
+      <strong>Contributing over 35% of India’s manufacturing output.</strong>
       <h4>Export-ready sectors:</h4>
       <ul>
         <li>Pharmaceuticals</li>
@@ -517,44 +524,43 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="opportunity-box">
       <h3>Supply Chain Integration</h3>
-      <strong>Partner in world-class manufacturing and supply solutions.</strong>
+      <strong>Join world-class supply and production.</strong>
       <h4>Key areas:</h4>
       <ul>
         <li>Gems & Jewellery</li>
         <li>Engineering</li>
         <li>Food Processing</li>
         <li>Nutraceuticals</li>
-        <li>Telecommunication</li>
+        <li>Telecom</li>
         <li>Tourism</li>
       </ul>
-      <div class="opportunity-note">End-to-end supply networks, international quality.</div>
+      <div class="opportunity-note">End-to-end quality, ready to grow with you.</div>
     </div>
     <div class="opportunity-box">
-      <h3>Government Support & Policy</h3>
-      <strong>100% FDI permitted under automatic route in most MSME sectors.</strong>
-      <h4>Emerging industries:</h4>
+      <h3>Government Support</h3>
+      <strong>100% FDI under automatic route in many MSME sectors.</strong>
+      <h4>New industries:</h4>
       <ul>
         <li>Fintech</li>
         <li>Digital Services</li>
-        <li>Green Technologies</li>
         <li>Clean Energy</li>
-        <li>Biotechnology</li>
+        <li>Green Tech</li>
+        <li>Biotech</li>
         <li>AgriTech</li>
       </ul>
-      <div class="opportunity-note">Stable policy, incentives, and easy business setup.</div>
+      <div class="opportunity-note">Stable policy, simple start, many incentives.</div>
     </div>
   </div>
 </section>
-
 <section class="contact-section">
   <h2>Contact</h2>
   <div class="contact-cards">
     <div class="contact-card">
       <h4>Ministry Headquarters</h4>
       <address>
-        Kartavya Bhawan<br />
-        Kartavya Path<br />
-        New Delhi 110001<br />
+        Kartavya Bhawan<br>
+        Kartavya Path<br>
+        New Delhi 110001<br>
         Phone: 011-23063288
       </address>
     </div>
@@ -565,14 +571,12 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 </section>
-
 <nav class="sticky-bar">
   <a href="#" onclick="event.preventDefault();openModal('registerModal');" aria-haspopup="dialog"> <i class="fas fa-handshake"></i> Register Interest </a>
   <a href="MSMEInvestmentGuide.pdf" target="_blank" rel="noopener"> <i class="fas fa-download"></i> Download Guide </a>
   <a href="#" onclick="event.preventDefault();openModal('consultationModal');" aria-haspopup="dialog"> <i class="fas fa-calendar-check"></i> Schedule Consultation </a>
   <a href="#" onclick="event.preventDefault();openModal('tradeFairModal');" aria-haspopup="dialog"> <i class="fas fa-users"></i> Join Trade Fair </a>
 </nav>
-
 <div id="registerModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" aria-labelledby="registerTitle">
   <div class="modal-content">
     <button class="close-btn" aria-label="Close dialog" onclick="closeModal('registerModal')">&times;</button>
@@ -604,7 +608,6 @@ document.addEventListener('DOMContentLoaded', () => {
     </form>
   </div>
 </div>
-
 <div id="consultationModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" aria-labelledby="consultTitle">
   <div class="modal-content">
     <button class="close-btn" aria-label="Close dialog" onclick="closeModal('consultationModal')">&times;</button>
@@ -648,7 +651,6 @@ document.addEventListener('DOMContentLoaded', () => {
     </form>
   </div>
 </div>
-
 <div id="tradeFairModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1" aria-labelledby="tradeTitle">
   <div class="modal-content">
     <button class="close-btn" aria-label="Close dialog" onclick="closeModal('tradeFairModal')">&times;</button>
