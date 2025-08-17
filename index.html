@@ -104,6 +104,47 @@
       font-style: italic;
       line-height: 1.5;
     }
+
+    /* Stats Blocks */
+    .stats-section {
+      max-width: 960px;
+      margin: 60px auto 80px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat-block {
+      background: rgba(253, 110, 98, 0.85);
+      border-radius: 16px;
+      padding: 32px 36px;
+      flex: 1 1 280px;
+      box-shadow: 0 10px 30px rgba(253, 110, 98, 0.6);
+      text-align: center;
+      color: #fff3de;
+      user-select: none;
+      font-weight: 700;
+      transition: transform 0.3s ease;
+    }
+    .stat-block:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 14px 40px rgba(253, 110, 98, 0.8);
+    }
+    .stat-number {
+      font-size: 3.8rem;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      color: #fff8e5;
+      margin-bottom: 10px;
+      text-shadow: 0 0 18px #fff3decc;
+    }
+    .stat-label {
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: #fff8e5cc;
+    }
+
     /* PDF Banner */
     .pdf-banner {
       margin: -100px auto 90px auto;
@@ -148,6 +189,7 @@
       background: linear-gradient(135deg, #f9ae45, #fbaa31);
       outline: none;
     }
+    
     /* Features */
     .features {
       display: flex;
@@ -289,17 +331,11 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 0.15; }
-      50% { transform: scale(1.2); opacity: 0.35; }
-    }
-
-    /* Modal styles */
     .modal {
       display: none;
       position: fixed;
       z-index: 10000;
-      left: 0;top: 0;
+      left: 0; top: 0;
       width: 100%; height: 100%;
       overflow: auto;
       background-color: rgba(0,0,0,0.5);
@@ -386,6 +422,25 @@
       </p>
     </div>
   </header>
+
+  <section class="stats-section" aria-label="MSME Statistics">
+    <div class="stat-block" tabindex="0" aria-describedby="stat1-desc">
+      <div class="stat-number">60M+</div>
+      <div class="stat-label" id="stat1-desc">Registered MSMEs</div>
+    </div>
+    <div class="stat-block" tabindex="0" aria-describedby="stat2-desc">
+      <div class="stat-number">~30%</div>
+      <div class="stat-label" id="stat2-desc">GDP Contribution</div>
+    </div>
+    <div class="stat-block" tabindex="0" aria-describedby="stat3-desc">
+      <div class="stat-number">~45%</div>
+      <div class="stat-label" id="stat3-desc">Export Share</div>
+    </div>
+    <div class="stat-block" tabindex="0" aria-describedby="stat4-desc">
+      <div class="stat-number">~290M</div>
+      <div class="stat-label" id="stat4-desc">Employment Generated</div>
+    </div>
+  </section>
 
   <div class="pdf-banner" role="region" aria-label="Official MSME scheme booklet and download">
     <div class="container">
