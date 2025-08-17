@@ -394,7 +394,7 @@
       background: #fff;
       color: #19539c;
       border-radius: 9px;
-      max-width: 406px;
+      max-width: 420px;
       width: 90vw;
       padding: 18px 14px 20px 14px;
       position: relative;
@@ -476,6 +476,11 @@
       });
     });
     document.addEventListener('DOMContentLoaded', () => {
+      const mergedFormOpenBtn = document.getElementById('mergedFormOpenBtn');
+      mergedFormOpenBtn.addEventListener('click', e => {
+        e.preventDefault();
+        openModal('registerAndConsultModal');
+      });
       document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', e => {
           e.preventDefault();
@@ -649,81 +654,77 @@
     </div>
   </section>
   <nav class="sticky-bar">
-    <a href="#" onclick="event.preventDefault();openModal('registerModal');" aria-haspopup="dialog"><i class="fas fa-handshake"></i> Register Interest</a>
-    <a href="#" onclick="event.preventDefault();openModal('consultationModal');" aria-haspopup="dialog"><i class="fas fa-calendar-check"></i> Schedule Consultation</a>
+    <a href="#" id="mergedFormOpenBtn" aria-haspopup="dialog"><i class="fas fa-handshake"></i> Register & Schedule Consultation</a>
     <a href="#" onclick="event.preventDefault();openModal('tradeFairModal');" aria-haspopup="dialog"><i class="fas fa-users"></i> Join Trade Fair</a>
   </nav>
-  <div id="registerModal" class="modal" aria-hidden="true" role="dialog" tabindex="-1">
+  <div id="registerAndConsultModal" class="modal" aria-hidden="true" role="dialog" tabindex="-1">
     <div class="modal-content">
-      <button class="close-btn" aria-label="Close dialog" onclick="closeModal('registerModal')">&times;</button>
-      <h2>Register Collaboration Interest</h2>
+      <button class="close-btn" aria-label="Close dialog" onclick="closeModal('registerAndConsultModal')">&times;</button>
+      <h2>Register Collaboration Interest & Schedule Consultation</h2>
       <form>
-        <label for="companyName">Company Name *</label>
-        <input id="companyName" name="companyName" required />
-        <label for="collaborationType">Collaboration Type *</label>
-        <select id="collaborationType" name="collaborationType" required>
-          <option value="" disabled selected>Select</option>
-          <option>Investment</option>
-          <option>Joint Venture</option>
-          <option>Supply Chain</option>
-          <option>Market Access</option>
-          <option>Growth</option>
-          <option>Other</option>
-        </select>
-        <label for="contactPerson">Contact Person *</label>
-        <input id="contactPerson" name="contactPerson" required />
-        <label for="email">Email *</label>
-        <input id="email" type="email" name="email" required />
-        <label for="phone">Phone *</label>
-        <input id="phone" name="phone" required />
-        <label for="country">Country *</label>
-        <input id="country" name="country" required />
-        <label for="comments">Comments</label>
-        <textarea id="comments" name="comments"></textarea>
+        <fieldset>
+          <legend>Collaboration Registration</legend>
+          <label for="companyName">Company Name *</label>
+          <input id="companyName" name="companyName" required />
+          <label for="collaborationType">Collaboration Type *</label>
+          <select id="collaborationType" name="collaborationType" required>
+            <option value="" disabled selected>Select</option>
+            <option>Investment</option>
+            <option>Joint Venture</option>
+            <option>Supply Chain</option>
+            <option>Market Access</option>
+            <option>Growth</option>
+            <option>Other</option>
+          </select>
+          <label for="contactPerson">Contact Person *</label>
+          <input id="contactPerson" name="contactPerson" required />
+          <label for="email">Email *</label>
+          <input id="email" type="email" name="email" required />
+          <label for="phone">Phone *</label>
+          <input id="phone" name="phone" required />
+          <label for="country">Country *</label>
+          <input id="country" name="country" required />
+          <label for="comments">Additional Comments</label>
+          <textarea id="comments" name="comments"></textarea>
+        </fieldset>
+        <fieldset style="margin-top: 16px;">
+          <legend>Schedule Consultation</legend>
+          <label for="consultName">Name *</label>
+          <input id="consultName" name="consultName" required />
+          <label for="consultEmail">Email *</label>
+          <input id="consultEmail" type="email" name="consultEmail" required />
+          <label for="organization">Organization *</label>
+          <input id="organization" name="organization" required />
+          <label for="consultType">Consultation Type *</label>
+          <select id="consultType" name="consultType" required>
+            <option value="" disabled selected>Select</option>
+            <option>Video Call</option>
+            <option>Phone Call</option>
+            <option>In Person</option>
+          </select>
+          <label for="consultDate">Preferred Date *</label>
+          <input id="consultDate" type="date" name="consultDate" required />
+          <label for="consultTime">Preferred Time *</label>
+          <select id="consultTime" name="consultTime" required>
+            <option value="" disabled selected>Select</option>
+            <option>Morning (9am-12pm IST)</option>
+            <option>Afternoon (12pm-3pm IST)</option>
+            <option>Evening (3pm-6pm IST)</option>
+          </select>
+          <label for="focusArea">Focus Area *</label>
+          <select id="focusArea" name="focusArea" required>
+            <option value="" disabled selected>Select</option>
+            <option>Investment</option>
+            <option>Regulatory</option>
+            <option>Partnership</option>
+            <option>Market Entry</option>
+            <option>Government Schemes</option>
+            <option>Export</option>
+          </select>
+          <label for="commentsCons">Comments</label>
+          <textarea id="commentsCons" name="commentsCons"></textarea>
+        </fieldset>
         <button type="submit" class="submit-btn">Submit</button>
-      </form>
-    </div>
-  </div>
-  <div id="consultationModal" class="modal" aria-hidden="true" role="dialog" tabindex="-1">
-    <div class="modal-content">
-      <button class="close-btn" aria-label="Close dialog" onclick="closeModal('consultationModal')">&times;</button>
-      <h2>Schedule Consultation</h2>
-      <form>
-        <label for="name">Name *</label>
-        <input id="name" name="name" required />
-        <label for="emailCons">Email *</label>
-        <input id="emailCons" type="email" name="emailCons" required />
-        <label for="organization">Organization *</label>
-        <input id="organization" name="organization" required />
-        <label for="consultType">Consultation Type *</label>
-        <select id="consultType" name="consultType" required>
-          <option value="" disabled selected>Select</option>
-          <option>Video Call</option>
-          <option>Phone Call</option>
-          <option>In Person</option>
-        </select>
-        <label for="date">Preferred Date *</label>
-        <input id="date" type="date" name="date" required />
-        <label for="time">Preferred Time *</label>
-        <select id="time" name="time" required>
-          <option value="" disabled selected>Select</option>
-          <option>Morning (9am-12pm IST)</option>
-          <option>Afternoon (12pm-3pm IST)</option>
-          <option>Evening (3pm-6pm IST)</option>
-        </select>
-        <label for="focusArea">Focus Area *</label>
-        <select id="focusArea" name="focusArea" required>
-          <option value="" disabled selected>Select</option>
-          <option>Investment</option>
-          <option>Regulatory</option>
-          <option>Partnership</option>
-          <option>Market Entry</option>
-          <option>Government Schemes</option>
-          <option>Export</option>
-        </select>
-        <label for="commentsCons">Comments</label>
-        <textarea id="commentsCons" name="commentsCons"></textarea>
-        <button type="submit" class="submit-btn">Schedule</button>
       </form>
     </div>
   </div>
